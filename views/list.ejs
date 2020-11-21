@@ -1,18 +1,40 @@
 <%-include("header") -%>
-    <div class="box" id="heading">
-      <h1><%= listTitle %></h1>
+<div class="box" id="heading">
+  <h1><%= listTitle %></h1>
+</div>
+<div class="box">
+  <% todoItems.forEach(item => { %>
+  <form action="/delete" method="post">
+    <div class="item">
+      <input
+        type="checkbox"
+        name="checkbox"
+        value="<%= item._id %>"
+        onChange="this.form.submit()"
+      />
+      <p><%= item.name %></p>
+      <input type="hidden" name="listName" value="<%= listTitle %>" />
     </div>
-    <div class="box">
-      <% for(i=0; i< todoItems.length; i++) { %>
-      <div class="item"> 
-        <input type="checkbox">     
-        <p><%= todoItems[i] %></p>
-      </div>
-      <% } %>      
-      <form class="item" action="/" method="post">
-        <input type="text" name="todoItem" placeholder="Add more list" autocomplete="off" required />
-        <button type="submit" name="list" value="<%= listTitle %>">+</button>
-      </form>
-    </div>
-   
-  <%-include("footer") -%>
+  </form>
+  <% }) %>
+
+  <form class="item" action="/" method="post">
+    <input
+      type="text"
+      name="todoItem"
+      placeholder="Add more list"
+      autocomplete="off"
+      required
+    />
+    <button type="submit" name="list" value="<%= listTitle %>">+</button>
+  </form>
+</div>
+
+<!-- <div class="sideBar">
+  <h3>List Categories</h3>
+  <ul>
+    <li><a href="/<%= listTitle %>"><%= listTitle %></a></li>
+  </ul>
+</div> -->
+
+<%-include("footer") -%>

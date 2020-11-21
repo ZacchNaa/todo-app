@@ -16,7 +16,7 @@ app.use(express.static("public"));
 
 //connecting to mongoDB with mongoose
 mongoose.connect(
-  "mongodb+srv://zacchaeus_napuo:zacchaeus@cluster0.xpov6.mongodb.net/todolist",
+  "mongodb+srv://zacchaeus_napuo:todo@cluster0.xpov6.mongodb.net/todolist",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
